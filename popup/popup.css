@@ -1,0 +1,23 @@
+﻿body {
+  font-family: system-ui, Arial;
+  margin: 12px;
+  width: 260px;
+}
+.container {
+  text-align: center;
+}
+#timer {
+  font-size: 32px;
+  margin: 10px 0;
+}
+.controls button {
+  margin: 4px;
+}
+.settings {
+  margin-top: 8px;
+  text-align: left;
+}
+label {
+  display: block;
+  margin: 4px 0;
+}
