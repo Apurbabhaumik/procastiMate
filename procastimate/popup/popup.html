@@ -1,0 +1,33 @@
+﻿<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ProcastiMate</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>ProcastiMate</h2>
+    <div id="mode">Work</div>
+    <div id="timer">25:00</div>
+    <div class="controls">
+      <button id="start">Start</button>
+      <button id="pause">Pause</button>
+      <button id="reset">Reset</button>
+    </div>
+
+    <div class="settings">
+      <label>Work (min): <input id="workMins" type="number" min="1" value="25" /></label>
+      <label>Break (min): <input id="breakMins" type="number" min="1" value="5" /></label>
+    </div>
+
+    <div>
+      <label><input id="blockEnabled" type="checkbox" /> Enable Site Block</label>
+    </div>
+
+    <small><a href="../options/options.html" target="_blank">Blocked sites & settings</a></small>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
