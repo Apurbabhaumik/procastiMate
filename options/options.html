@@ -2,18 +2,154 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>ProcastiMate Options</title>
+    <title>ProcastiMate — Options & Stats</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f6f8fb;
+        --card: #ffffff;
+        --muted: #6b7280;
+        --accent: #0b66c2;
+        --pad: 14px;
+        --radius: 12px;
+      }
+      body {
+        font-family: Inter, system-ui, Arial;
+        margin: 18px;
+        background: var(--bg);
+        color: #0f172a;
+      }
+      .wrap {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .card {
+        background: var(--card);
+        padding: 16px;
+        border-radius: var(--radius);
+        box-shadow: 0 6px 18px rgba(11, 102, 194, 0.06);
+        margin-bottom: 14px;
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: 20px;
+      }
+      label {
+        font-weight: 600;
+        color: var(--muted);
+        display: block;
+        margin-bottom: 6px;
+      }
+      textarea {
+        width: 100%;
+        min-height: 84px;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #e6edf3;
+        resize: vertical;
+      }
+      .row {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      button {
+        background: var(--accent);
+        color: white;
+        padding: 8px 12px;
+        border-radius: 8px;
+        border: 0;
+        cursor: pointer;
+      }
+      .muted {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      #chartWrap {
+        height: 260px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #f0f3f7;
+      }
+      th {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .controls {
+        display: flex;
+        gap: 8px;
+        margin-top: 10px;
+      }
+    </style>
   </head>
   <body>
-    <h2>ProcastiMate — Options</h2>
-    <div>
-      <label>Blocked sites (one per line):</label><br />
-      <textarea id="blocked" rows="8" cols="40"></textarea>
+    <div class="wrap">
+      <div class="card">
+        <h1>ProcastiMate — Options & Stats</h1>
+        <p class="muted">
+          Edit blocked sites (one per line) and view time spent across sites.
+          Chart shows last 7 days total.
+        </p>
+
+        <label for="blocked">Blocked sites</label>
+        <textarea id="blocked" placeholder="youtube.com"></textarea>
+
+        <div class="controls" style="margin-top: 10px">
+          <button id="save">Save</button>
+          <button id="apply">Apply to open tabs</button>
+          <button id="resetStats" style="background: #ef4444">
+            Reset stats
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          <div>
+            <h1 style="font-size: 16px; margin-bottom: 6px">
+              Focus (Last 7 days)
+            </h1>
+            <p class="muted">Total focus minutes per day</p>
+          </div>
+          <div class="muted">Auto-updates</div>
+        </div>
+
+        <div id="chartWrap" class="card" style="padding: 12px">
+          <canvas id="weeklyChart"></canvas>
+        </div>
+
+        <h1 style="margin-top: 12px; font-size: 16px">Time Spent by Site</h1>
+        <table id="statsTable" aria-describedby="statsDesc">
+          <thead>
+            <tr>
+              <th>Site</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
     </div>
-    <div>
-      <button id="save">Save</button>
-      <button id="apply">Apply to open tabs</button>
-    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="options.js"></script>
   </body>
 </html>

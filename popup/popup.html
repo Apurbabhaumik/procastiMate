@@ -7,10 +7,23 @@
     <link rel="stylesheet" href="popup.css" />
   </head>
   <body>
-    <div class="container">
-      <h2>ProcastiMate</h2>
-      <div id="mode">Work</div>
-      <div id="timer">25:00</div>
+    <div class="card">
+      <div class="top">
+        <div class="title">ProcastiMate</div>
+        <div class="today" id="todayTotal">Today: 0m</div>
+      </div>
+
+      <div class="timerWrap">
+        <svg class="progress" viewBox="0 0 120 120">
+          <circle cx="60" cy="60" r="52" class="bg" />
+          <circle cx="60" cy="60" r="52" class="fg" id="progressCircle" />
+        </svg>
+        <div class="timerInner">
+          <div id="mode">Work</div>
+          <div id="timer">25:00</div>
+        </div>
+      </div>
+
       <div class="controls">
         <button id="start">Start</button>
         <button id="pause">Pause</button>
@@ -19,25 +32,24 @@
 
       <div class="settings">
         <label
-          >Work (min): <input id="workMins" type="number" min="1" value="25"
-        /></label>
+          >Work <input id="workMins" type="number" min="1" value="25" />m</label
+        >
         <label
-          >Break (min): <input id="breakMins" type="number" min="1" value="5"
-        /></label>
-      </div>
-
-      <div>
-        <label
-          ><input id="blockEnabled" type="checkbox" /> Enable Site Block</label
+          >Break
+          <input id="breakMins" type="number" min="1" value="5" />m</label
         >
       </div>
 
-      <small
-        ><a href="../options/options.html" target="_blank"
-          >Blocked sites & settings</a
-        ></small
-      >
+      <div class="blockRow">
+        <label
+          ><input id="blockEnabled" type="checkbox" /> Enable Site Block</label
+        >
+        <a class="link" href="../options/options.html" target="_blank"
+          >Settings</a
+        >
+      </div>
     </div>
+
     <script src="popup.js"></script>
   </body>
 </html>
